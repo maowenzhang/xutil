@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2010
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "html", "html\html.pyproj", "{FD61A334-0922-4AB9-9EA1-5345DD88A8D4}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "util", "util\util.pyproj", "{7391ACB1-1807-48D0-8575-8E06F4872276}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "automatepc", "automatepc\automatepc.pyproj", "{BCDB45A3-E9C9-4B90-90CC-F7CA5C149BE2}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "schedule", "schedule\schedule.pyproj", "{3D17C927-6D74-404A-8B40-B963F2ACEDD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,14 @@ Global
 		{7391ACB1-1807-48D0-8575-8E06F4872276}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7391ACB1-1807-48D0-8575-8E06F4872276}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7391ACB1-1807-48D0-8575-8E06F4872276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCDB45A3-E9C9-4B90-90CC-F7CA5C149BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCDB45A3-E9C9-4B90-90CC-F7CA5C149BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCDB45A3-E9C9-4B90-90CC-F7CA5C149BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCDB45A3-E9C9-4B90-90CC-F7CA5C149BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D17C927-6D74-404A-8B40-B963F2ACEDD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D17C927-6D74-404A-8B40-B963F2ACEDD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D17C927-6D74-404A-8B40-B963F2ACEDD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D17C927-6D74-404A-8B40-B963F2ACEDD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

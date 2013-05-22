@@ -1,0 +1,12 @@
+{
+	"runtime" : "7:30"
+	, "rundays" : {   "Monday" : 1
+					, "Tuesday" : 0
+					, "Wednsday" : 1
+					, "Thursday" : 0
+					, "Friday" : 1
+					, "Saturday" : 0
+					, "Sunday" : 0
+				  }					
+	, "runtask" : "notepad.exe"
+}

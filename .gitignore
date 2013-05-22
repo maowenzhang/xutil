@@ -1,0 +1,3 @@
+*.suo
+*/*.log
+*/__pycache__
