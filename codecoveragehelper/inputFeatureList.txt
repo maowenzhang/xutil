@@ -1,0 +1,5 @@
+Modeling	lori	sally	modeling,assembly dev qa
+Modeling:Resolve	sachin	mike	resolve
+Modeling:Loft	loft
+Sketch:General
+Sketch:Constraint	LoriZhang	SallyYang	constraint,vcs,sketch

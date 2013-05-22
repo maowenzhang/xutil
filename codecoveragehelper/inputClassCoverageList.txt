@@ -1,0 +1,3 @@
+Na::ResolveCmd	30%
+Na::OffsetSketchCmd	20%
+SketchSolverLine 50%

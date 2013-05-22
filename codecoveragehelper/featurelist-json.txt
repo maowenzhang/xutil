@@ -1,0 +1,5 @@
+{[
+	  { "name": "Modeling", "key": ["modeling", "assembly", ""] }
+	, { "name": "Modeling:Resolve", "key": ["resolve"] }
+	, { "name": "Modeling:Resolve", "key": ["resolve"] }
+]}

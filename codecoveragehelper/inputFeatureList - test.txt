@@ -1,0 +1,8 @@
+Modeling	lori	sally	modeling,assembly dev qa
+Modeling:Resolve	sachin	mike	resolve
+Modeling:Loft	loft
+Modeling:only1
+testing:only1
+ testing:only2	lori
+testing:only3	lori	sally
+TESTING-LIBAndNews	lori	cathy	lib,new

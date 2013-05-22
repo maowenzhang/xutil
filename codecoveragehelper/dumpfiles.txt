@@ -1,0 +1,13 @@
+D:\tech\python\Python33\CodeCoverageHelper
+D:\tech\python\Python33\DLLs
+D:\tech\python\Python33\Doc
+D:\tech\python\Python33\include
+D:\tech\python\Python33\Lib
+D:\tech\python\Python33\libs
+D:\tech\python\Python33\LICENSE.txt
+D:\tech\python\Python33\NEWS.txt
+D:\tech\python\Python33\python.exe
+D:\tech\python\Python33\pythonw.exe
+D:\tech\python\Python33\README.txt
+D:\tech\python\Python33\tcl
+D:\tech\python\Python33\Tools
