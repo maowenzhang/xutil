@@ -3,9 +3,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>fd61a334-0922-4ab9-9ea1-5345dd88a8d4</ProjectGuid>
+    <ProjectGuid>23970016-c953-4a69-97bf-544252329cc8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>savefile.py</StartupFile>
+    <StartupFile>autoGetCERDumpFileAndDllPdb.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,8 +22,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="html.py" />
+    <Compile Include="autoGetCERDumpFileAndDllPdb.py" />
+    <Compile Include="htmlhelper.py" />
     <Compile Include="savefile.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="report.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
