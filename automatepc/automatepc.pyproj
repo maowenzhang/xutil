@@ -24,17 +24,20 @@
   <ItemGroup>
     <Compile Include="autoSyncBuild.py" />
     <Compile Include="scheduletaskhelper.py" />
-    <Compile Include="autoSyncBuild_V1_main.py" />
     <Compile Include="main.py" />
     <Compile Include="taskrunner.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="autoSyncBuild.log" />
+    <Content Include="autoSyncBuild.log__2013-05-23_20-09.log" />
     <Content Include="config.json" />
     <Content Include="Disable_autoShutdown.bat" />
     <Content Include="Disable_autoShutdownAndSyncBuild.bat" />
     <Content Include="Enable_autoShutdown.bat" />
     <Content Include="Enable_autoShutdownAndSyncBuild.bat" />
     <Content Include="Learning_AutomatePC.docx" />
+    <Content Include="main.bat" />
+    <Content Include="scheduletaskhelper__test.bat" />
     <Content Include="shutdown.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
