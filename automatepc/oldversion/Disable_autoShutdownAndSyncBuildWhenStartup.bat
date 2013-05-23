@@ -1,0 +1,1 @@
+python.exe C:\Users\zhanglo\Documents\GitHub\xutil\automatepc\autoShutdownAndSyncBuildWhenStartup.py 0

@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{bcdb45a3-e9c9-4b90-90cc-f7ca5c149be2}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>autoSyncBuild_main.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,8 +22,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="taskRunner.py" />
-    <Compile Include="autoSyncBuild_main.py" />
+    <Compile Include="autoSyncBuild.py" />
+    <Compile Include="scheduletaskhelper.py" />
+    <Compile Include="autoSyncBuild_V1_main.py" />
+    <Compile Include="main.py" />
+    <Compile Include="taskrunner.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.json" />
+    <Content Include="Disable_autoShutdown.bat" />
+    <Content Include="Disable_autoShutdownAndSyncBuild.bat" />
+    <Content Include="Enable_autoShutdown.bat" />
+    <Content Include="Enable_autoShutdownAndSyncBuild.bat" />
+    <Content Include="Learning_AutomatePC.docx" />
+    <Content Include="shutdown.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

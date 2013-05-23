@@ -1,55 +1,52 @@
-#==================================
-# taskrunner.py
+#===============================
+# autoSyncBuild V1.0
 #
-# Used to run commands, based on input information
+# This script is used to auto sync codes and call script to rebuild
+# sync to latest codes -> rebuild codes
 #
-# Usage: 
-#       1. prepare config info, such as below
-#       config =  
-#		    { 
-#			      "logfile"  : "autoSyncBuild.log"
-#			    , "summary"	 : "sync to latest codes and rebuild codes"
-#			    , "commands" :
-#			    	[
-#			    		  "p4.exe sync //depot/Neutron/main/...#head"
-#			    		, "python.exe E:\\Neutron\\main\\src\\Fusion\\Build\\Windows\\BuildWin64Debug_CMake.py"
-#			    	]
-#		    }
-#       2. call taskrunner.run(config), refer to "autoSyncBuild.py"
-#
-# Comments:
-#       1. all message will be added to log file
-#
+# Usages:
+#       1. set location of codes and log file as below
+#       2. create a task in task schedule to run this script when computer startup (without log-on)
+#       3. modify BIOS (F10->BIOS->menu (Advanced->BIOS Power-On)->set when to start pc)
+#       4. copy shortcut "StartWin64DebugVisualStudio_CMake.py" in pc startup folder to start it when log-on
+#       
 # By zhanglo, 5/20/2013
-
-import sys
-from datetime import datetime
-import subprocess
-import shutil
 
 #===============================
 # configuration
 #
-class ConfigInfo:
-    def __init__(self, config):
-        self.summary = config.get("summary")
-        self.logpath = config.get("logfile")
-        self.commands = config.get("commands")
+# Sync latest codes
+CODEPATH = r'//depot/Neutron/main/...'
+
+# Location of build scripts (NOT using virtiral mapped disk, or taskSchedule will fail!)
+BUILDPATH = r'E:\Neutron\main\src\Fusion\Build\Windows'
+
+# Add datetime at the end of file name (NOT using virtiral mapped disk, or taskSchedule will fail!)
+LOGPATH = r'C:\Users\zhanglo\Desktop\Tool\autoSyncBuild_V1_main'
+
+# Run tasks
+RUNTASKS = [
+    r'p4.exe sync ' + CODEPATH + r'#head'
+    , "python.exe " + BUILDPATH + r"\BuildWin64Debug_CMake.py"
+    # As task schdule is run in background process, useless to start VS
+    #, "python.exe " + BUILDPATH + r"\StartWin64DebugVisualStudio_CMake.py" 
+    ]
+
+
+import sys
+from datetime import datetime
+import subprocess
 
 #===============================
 # Output info to log file
 #
 class RedirectOutputToFile:
-    def __init__(self):
-        pass
-    
-    def setLogfile(self, logfile):
-        self.out_file = open(logfile, 'w')
-        
-        self.logfile = logfile      
+    def __init__(self, logfile):
         curtimestr = '__{:%Y-%m-%d_%H-%M}.log'.format(datetime.now())
-        self.logfileWithTime = logfile + curtimestr
-            
+        logfile += curtimestr
+        
+        self.out_file = open(logfile, 'w')        
+        
     def __enter__(self):
         self.out_old = sys.stdout
         self.err_old = sys.stderr
@@ -61,19 +58,17 @@ class RedirectOutputToFile:
         self.out_file.close()
         sys.stdout = self.out_old
         sys.stderr = self.err_old
-
-        shutil.copyfile(self.logfile, self.logfileWithTime)
-
         print('exit...')
         
     def flush(self):
         self.out_file.flush();
 
-REDIRECTOUT = RedirectOutputToFile()
+REDIRECTOUT = RedirectOutputToFile(LOGPATH)
 
 def flushOutput():
     if REDIRECTOUT:
-        REDIRECTOUT.flush()        
+        REDIRECTOUT.flush()
+        
   
 def printwarning(str):
 	print("!!!!!!!!!!!!!!!!!!!!!\t", str)
@@ -117,27 +112,23 @@ def runcmds(cmds):
         if not ret:
             break
 
-def runex(config):
-    configInfo = ConfigInfo(config)
-
+def run():
     starttime = datetime.now()
     print('\n\n************************************************************************')
-    print('*************** START taskRunner: ' + str(starttime))
-    print("Summary: ", config.get("summary"))
+    print('*************** START autoSyncBuild: ' + str(starttime))
 
-    runcmds(configInfo.commands)
+    runcmds(RUNTASKS)
 
     endtime = datetime.now()
     runtime = endtime - starttime
-    print('\n\n*************** END taskRunner: ' + str(endtime))
-    print('\n*************** TIME taskRunner: ' + str(runtime))
+    print('\n\n*************** END autoSyncBuild: ' + str(endtime))
+    print('\n*************** TIME autoSyncBuild: ' + str(runtime))
 
 #===============================
 # Run
 #
-def run(config):
-    REDIRECTOUT.setLogfile(config.get("logfile"))
-    with REDIRECTOUT:
-        runex(config)
+
+with REDIRECTOUT:
+    run()
 
 #input('<press enter to exit>......')

@@ -1,0 +1,51 @@
+{
+	"syncbuild" : 
+			{ 
+				  "logfile"  : "autoSyncBuild.log"
+				, "summary"	 : "sync to latest codes and rebuild codes"
+				, "commands" :
+					[
+						  "p4.exe sync //depot/Neutron/main/...#head"
+						, "python.exe E:\\Neutron\\main\\src\\Fusion\\Build\\Windows\\BuildWin64Debug_CMake.py"
+					]
+			}
+	, "scheduletasks" : 
+			[
+				{
+					  "name" 	 : "Enable_autoShutdown"
+					, "summary"	 : "create task-autoShutdown in windows task scheduler, run daily at 18:00"
+					, "commands" : 
+						[
+							"schtasks /create /f /tn autoShutdown /tr shutdown.bat /sc daily /st 18:00"
+						]
+				}
+				, {
+					  "name" 	 : "Disable_autoShutdown"
+					, "summary"	 : "delete task-autoShutdown in windows task scheduler"
+					, "commands" : 
+						[
+							"schtasks /delete /f /tn autoShutdown"
+						]
+				}
+				, {
+					  "name" 	 : "Enable_autoShutdownAndSyncBuild"
+					, "summary"	 : "create 3 tasks-autoShutdown(daily at 18:00), autoSyncbuild(on pc start), autoOpenSyncBuildLog (on pc start) in windows task scheduler"
+					, "commands" : 
+						[
+							  "schtasks /create /f /tn autoShutdown /tr shutdown.bat /sc daily /st 18:00"
+							, "schtasks /create /f /tn autoSyncBuild /tr autoSyncBuild.py /sc onstart RunWithoutLogon"
+							, "schtasks /create /f /tn autoOpenSyncBuildLog /tr autoSyncBuild.log /sc onstart"
+						]
+				}
+				, {
+					  "name" 	 : "Disable_autoShutdownAndSyncBuild"
+					, "summary"	 : "delete 3 tasks-autoShutdown(daily at 18:00), autoSyncbuild(on pc start), autoOpenSyncBuildLog (on pc start)"
+					, "commands" : 
+						[
+							"schtasks /delete /f /tn autoShutdown"
+							, "schtasks /delete /f /tn autoSyncBuild"
+							, "schtasks /delete /f /tn autoOpenSyncBuildLog"
+						]
+				}
+			]
+}
