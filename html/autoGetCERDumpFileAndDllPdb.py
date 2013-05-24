@@ -3,7 +3,7 @@ import urllib.request, os
 #=========================================================
 # configuration
 #
-ROOTFOLDER = r'D:\tech\python\codes\html'
+ROOTFOLDER = r'X:\cer'
 ZIPEXE = r'c:\Program Files\7-Zip\7z.exe'
 
 f1 = r'http://s.cn.bing.net/az/hprichv/MoonJellyfish_Corbis_320009_061_ZH-CN.ogv'
@@ -101,11 +101,28 @@ def downloadFile(fileUrl, outputFile):
     print('download to:\t', outputFile);
 
     #try:
-    local_filename, headers = urllib.request.urlretrieve(fileUrl, outputFile)
-    #except:
+    fileUrl = r'https://share.autodesk.com'
+    auth = urllib.request.HTTPDigestAuthHandler()
+    #auth = urllib.request.HTTPBasicAuthHandler()
+    auth.add_password(
+        realm=None,
+        uri='https://share.autodesk.com',
+        user='ads\\zhanglo',
+        passwd='#1223z0612y*')
+    opener = urllib.request.build_opener(auth)
+    urllib.request.install_opener(opener)
 
-    print('filename:\t', local_filename)
-    print('headers:\t', headers)
+    try:
+        print(fileUrl)
+        res = urllib.request.urlopen(fileUrl)
+        #local_filename, headers = urllib.request.urlretrieve(fileUrl, outputFile)
+    except urllib.error.HTTPError as e:
+        print(e)
+        print('')
+        print(e.headers)
+
+    #print('filename:\t', local_filename)
+    #print('headers:\t', headers)
     
     if not os.path.exists(outputFile):
         print('fail to download file:\t', outputFile)
@@ -253,10 +270,10 @@ def run():
     runReport(reportId, dllpdbNames)
 
 def runtest():
-    #reportId = '79953347'
-    #runReport(reportId)
+    reportId = '79953347'
+    runReport(reportId, ['nasketch', 'nafusion'])
 
-    testparsezip()
+    #testparsezip()
 
 #run()
 runtest()
