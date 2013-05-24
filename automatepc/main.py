@@ -32,7 +32,7 @@ def createShortcutBatchFile(tasks):
         print("create file: " + name, '.bat')
         f = open(name + '.bat', 'w')
         schedulefile = os.path.join(os.path.dirname(__file__), "scheduletaskhelper.py")
-        #schedulefile = "scheduletaskhelper.py"
+        #schedulefile = r'%~dp0\scheduletaskhelper.py'
         output = 'python.exe {0} {1}\n'.format(schedulefile, name)
         f.write(output)
         f.close()
@@ -53,4 +53,4 @@ def run():
     createAutoShutdownSyncBuildTasks()
 
 run()
-input("press enter to exit...")
+input("\nFinish configuration, enjoy it! Press enter to exit...")

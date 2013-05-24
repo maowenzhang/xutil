@@ -25,7 +25,7 @@ import re
 
 class UserInfo:
     def __init__(self):
-        self.name = getpass.getuser()
+        self.name = 'ADS\\' + getpass.getuser()
         print('user name: \t', self.name)
         print('password is required to create task in windows task scheduler')
         self.password = getpass.win_getpass()
@@ -132,8 +132,8 @@ def run():
     args = parser.parse_args()
 
     runex(args.taskname)
-
-    input("\n(run as admin if access denied) press enter to exit ....")
+    print("Task are updated to windows task scheduler.")
+    input("\n(run as admin if access denied) press enter to continue ....")
 
 run()
 

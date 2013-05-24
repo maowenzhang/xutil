@@ -22,7 +22,7 @@
 #
 # By zhanglo, 5/20/2013
 
-import sys
+import sys, os
 from datetime import datetime
 import subprocess
 import shutil
@@ -136,7 +136,8 @@ def runex(config):
 # Run
 #
 def run(config):
-    REDIRECTOUT.setLogfile(config.get("logfile"))
+    logfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), config.get("logfile"))
+    REDIRECTOUT.setLogfile(logfile)
     with REDIRECTOUT:
         runex(config)
 
